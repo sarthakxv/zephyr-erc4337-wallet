@@ -146,7 +146,7 @@ export const Sidebar = () => {
         onRequestClose={() => setSendModalOpen(false)}
         style={modalConfig}
       >
-        <>
+        <div>
           <h3 className="text-2xl font-bold">Send</h3>
           <div className="flex flex-col space-y-4">
             <div className="flex flex-col space-y-1">
@@ -174,7 +174,7 @@ export const Sidebar = () => {
               Send
             </Button>
           </div>
-        </>
+        </div>
       </Modal>
 
       {/* QR Modal */}
@@ -183,8 +183,10 @@ export const Sidebar = () => {
         onRequestClose={() => setReceiveModalOpen(false)}
         style={modalConfig}
       >
-        <p className="text-2xl p-4 font-bold">Receive</p>
-        <img src="https://raw.githubusercontent.com/remiroyc/react-ethereum/master/images/qrcode-sample.png" />
+        <div>
+          <p className="text-2xl p-4 font-bold">Receive</p>
+          <img src="https://raw.githubusercontent.com/remiroyc/react-ethereum/master/images/qrcode-sample.png" />
+        </div>
       </Modal>
 
       <div className="flex flex-col flex-1 min-h-0 text-neutral-900 border-r border-neutral-200">
