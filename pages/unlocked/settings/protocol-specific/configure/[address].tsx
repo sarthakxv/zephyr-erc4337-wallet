@@ -45,9 +45,9 @@ const Page: NextPage = () => {
         </div>
 
         <div className="flex flex-col mt-4 gap-4 ">
-          {functions.map((func) => {
+          {functions.map((func, index) => {
             return (
-              <div className="flex flex-row justify-between border border-gray-300 px-4 py-2 rounded-lg items-center max-w-md">
+              <div key={index} className="flex flex-row justify-between border border-gray-300 px-4 py-2 rounded-lg items-center max-w-md">
                 <p className="font-medium">{func.name}</p>
                 <Button className="ml-8" onClick={onSubmit}>Allow </Button>
               </div>

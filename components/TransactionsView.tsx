@@ -44,7 +44,9 @@ export const TransactionsView: React.FC<ITransactionsViewProps> = ({
         {!transactions ? (
           <p>Loading...</p>
         ) : (
-          transactions.items.map((txn: any) => <TransactionCard txn={txn} />)
+          transactions.items.map((txn: any, index: number) => (
+            <TransactionCard txn={txn} key={index} />
+          ))
         )}
       </div>
     </div>

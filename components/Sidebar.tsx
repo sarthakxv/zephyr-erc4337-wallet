@@ -21,8 +21,8 @@ import { JsonRpcProvider } from '@ethersproject/providers';
 import { ethers, Signer } from 'ethers';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccountBalance } from 'ankr-react';
-import { useSendTransaction, usePrepareSendTransaction } from 'wagmi'
-import {BigNumber} from 'ethers'
+import { useSendTransaction, usePrepareSendTransaction } from 'wagmi';
+import { BigNumber } from 'ethers';
 import { sendTransaction } from '@wagmi/core';
 
 interface IWalletCardProps {
@@ -36,9 +36,6 @@ const WalletCard: FC<IWalletCardProps> = ({ address, tag }) => {
     // @ts-expect-error
     address,
   });
-  
-
-
 
   return (
     <div className="flex flex-col items-start justify-center p-4 space-y-2 bg-white border border-gray-300 rounded-md w-full">
@@ -58,13 +55,11 @@ const WalletCard: FC<IWalletCardProps> = ({ address, tag }) => {
 };
 
 export const Sidebar = () => {
-
-
   const { config } = usePrepareSendTransaction({
     request: { to: 'moxey.eth', value: BigNumber.from('10000000000000000') },
-  })
+  });
   const { data, isLoading, isSuccess, sendTransaction } =
-  useSendTransaction(config)
+    useSendTransaction(config);
 
   const router = useRouter();
 
@@ -110,7 +105,7 @@ export const Sidebar = () => {
     // });
     // const res = await tx.wait();
     // console.log(res);
-await sendTransaction?.()
+    await sendTransaction?.();
 
     // const owner = signer as Signer;
     // const walletAPI = new SimpleAccountAPI({
@@ -151,33 +146,35 @@ await sendTransaction?.()
         onRequestClose={() => setSendModalOpen(false)}
         style={modalConfig}
       >
-        <h3 className="text-2xl font-bold">Send</h3>
-        <div className="flex flex-col space-y-4">
-          <div className="flex flex-col space-y-1">
-            <label htmlFor="send-to-address">Send to address</label>
-            <Input
-              id="send-to-address"
-              type="text"
-              value={sendToWalletAddress}
-              onChange={(e) => setSendToWalletAddress(e.target.value)}
-            />
-          </div>
+        <>
+          <h3 className="text-2xl font-bold">Send</h3>
+          <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-1">
+              <label htmlFor="send-to-address">Send to address</label>
+              <Input
+                id="send-to-address"
+                type="text"
+                value={sendToWalletAddress}
+                onChange={(e) => setSendToWalletAddress(e.target.value)}
+              />
+            </div>
 
-          <div className="flex flex-col space-y-1">
-            <label htmlFor="send-amount">Amount</label>
-            <Input
-              id="send-amount"
-              type="text"
-              placeholder="Enter amount in MATIC"
-              value={sendAmount}
-              onChange={(e) => setSendAmount(e.target.value)}
-            />
-          </div>
+            <div className="flex flex-col space-y-1">
+              <label htmlFor="send-amount">Amount</label>
+              <Input
+                id="send-amount"
+                type="text"
+                placeholder="Enter amount in MATIC"
+                value={sendAmount}
+                onChange={(e) => setSendAmount(e.target.value)}
+              />
+            </div>
 
-          <Button variant="primary" onClick={sendMoney}>
-            Send
-          </Button>
-        </div>
+            <Button variant="primary" onClick={sendMoney}>
+              Send
+            </Button>
+          </div>
+        </>
       </Modal>
 
       {/* QR Modal */}
